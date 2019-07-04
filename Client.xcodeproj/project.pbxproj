@@ -269,6 +269,17 @@
 		63306D3921103EAE00F25400 /* SavedTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63306D3821103EAE00F25400 /* SavedTab.swift */; };
 		63306D432110B3CD00F25400 /* TabManagerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63306D422110B3CD00F25400 /* TabManagerStore.swift */; };
 		63306D452110BAF000F25400 /* TabManagerStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63306D442110BAF000F25400 /* TabManagerStoreTests.swift */; };
+		663F948422CE161E00D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948522CE161E00D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948622CE161F00D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948722CE161F00D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948822CE162000D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948922CE162000D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948A22CE162100D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948B22CE162100D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948C22CE162100D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948D22CE162200D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
+		663F948E22CE162200D8B29A /* ScopeAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663F948122CE161700D8B29A /* ScopeAgent.framework */; };
 		6669B5E2211418A200CA117B /* WebsiteDataSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669B5E1211418A200CA117B /* WebsiteDataSearchResultsViewController.swift */; };
 		66CE54A820FCF6CF00CC310B /* WebsiteDataManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CE54A720FCF6CF00CC310B /* WebsiteDataManagementViewController.swift */; };
 		742A56391D80B54A00BDB803 /* PhotonActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742A56381D80B54A00BDB803 /* PhotonActionSheet.swift */; };
@@ -1391,6 +1402,7 @@
 		63306D3821103EAE00F25400 /* SavedTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTab.swift; sourceTree = "<group>"; };
 		63306D422110B3CD00F25400 /* TabManagerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManagerStore.swift; sourceTree = "<group>"; };
 		63306D442110BAF000F25400 /* TabManagerStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManagerStoreTests.swift; sourceTree = "<group>"; };
+		663F948122CE161700D8B29A /* ScopeAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScopeAgent.framework; path = Carthage/Build/iOS/ScopeAgent.framework; sourceTree = "<group>"; };
 		6669B5E1211418A200CA117B /* WebsiteDataSearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteDataSearchResultsViewController.swift; sourceTree = "<group>"; };
 		66CE54A720FCF6CF00CC310B /* WebsiteDataManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteDataManagementViewController.swift; sourceTree = "<group>"; };
 		742A56381D80B54A00BDB803 /* PhotonActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotonActionSheet.swift; sourceTree = "<group>"; };
@@ -1868,6 +1880,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B604FC01C495FD1006EEEC3 /* XCGLogger.framework in Frameworks */,
+				663F948822CE162000D8B29A /* ScopeAgent.framework in Frameworks */,
 				28ECD9BF1BA1F19900D829DA /* libz.tbd in Frameworks */,
 				282731691ABC9BE700AA1954 /* Sync.framework in Frameworks */,
 			);
@@ -1934,6 +1947,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FA436061ABB83B4008031D1 /* Account.framework in Frameworks */,
+				663F948722CE161F00D8B29A /* ScopeAgent.framework in Frameworks */,
 				7B604FBF1C495E60006EEEC3 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1957,6 +1971,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FCAE2251ABB51F800877008 /* Storage.framework in Frameworks */,
+				663F948622CE161F00D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1984,6 +1999,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				663F948D22CE162200D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1992,6 +2008,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				392E18031FEC4D7B00EBA79C /* MappaMundi.framework in Frameworks */,
+				663F948C22CE162100D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2000,6 +2017,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				392E18041FEC4D9E00EBA79C /* MappaMundi.framework in Frameworks */,
+				663F948A22CE162100D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2007,6 +2025,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				663F948B22CE162100D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2014,6 +2033,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				663F948522CE161E00D8B29A /* ScopeAgent.framework in Frameworks */,
 				E6231C071B90A712005ABB0D /* libz.tbd in Frameworks */,
 				7B604F991C494F74006EEEC3 /* KIF.framework in Frameworks */,
 				D36998891AD70A0A00650C6C /* IOKit.framework in Frameworks */,
@@ -2034,6 +2054,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DB07E1E97DEAA008A67E6 /* SyncTelemetry.framework in Frameworks */,
+				663F948E22CE162200D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2042,6 +2063,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F965121B2F1CF20034B023 /* Shared.framework in Frameworks */,
+				663F948922CE162000D8B29A /* ScopeAgent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2050,6 +2072,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05435192261171200FDE4EF /* Storage.framework in Frameworks */,
+				663F948422CE161E00D8B29A /* ScopeAgent.framework in Frameworks */,
 				E6231C081B90A71E005ABB0D /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2585,6 +2608,7 @@
 		7B604FC11C496005006EEEC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				663F948122CE161700D8B29A /* ScopeAgent.framework */,
 				D05434BF2257DE9900FDE4EF /* Leanplum.framework */,
 				C8E18F1F222EDED000E30E52 /* SafariServices.framework */,
 				C8E18F1D222EDE4400E30E52 /* Accelerate.framework */,
@@ -3620,6 +3644,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 282731981ABC9BE800AA1954 /* Build configuration list for PBXNativeTarget "SyncTests" */;
 			buildPhases = (
+				669909D322CE2AB400327E20 /* Copy Carthage Dependencies */,
 				282731641ABC9BE700AA1954 /* Sources */,
 				282731651ABC9BE700AA1954 /* Frameworks */,
 				282731661ABC9BE700AA1954 /* Resources */,
@@ -3680,6 +3705,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FA436181ABB83B4008031D1 /* Build configuration list for PBXNativeTarget "AccountTests" */;
 			buildPhases = (
+				663F949122CE298700D8B29A /* Copy Carthage Dependencies */,
 				2FA436011ABB83B4008031D1 /* Sources */,
 				2FA436021ABB83B4008031D1 /* Frameworks */,
 				2FA436031ABB83B4008031D1 /* Resources */,
@@ -3719,6 +3745,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2FCAE2371ABB51F900877008 /* Build configuration list for PBXNativeTarget "StorageTests" */;
 			buildPhases = (
+				669909D222CE2AA300327E20 /* Copy Carthage Dependencies */,
 				2FCAE2201ABB51F800877008 /* Sources */,
 				2FCAE2211ABB51F800877008 /* Frameworks */,
 				2FCAE2221ABB51F800877008 /* Resources */,
@@ -3776,6 +3803,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B43E3E91D95C48E00BBA9DB /* Build configuration list for PBXNativeTarget "StoragePerfTests" */;
 			buildPhases = (
+				669909D922CE2AE700327E20 /* Copy Carthage Dependencies */,
 				3B43E3CC1D95C48D00BBA9DB /* Sources */,
 				3B43E3CD1D95C48D00BBA9DB /* Frameworks */,
 				3B43E3CE1D95C48D00BBA9DB /* Resources */,
@@ -3813,6 +3841,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E60138631C89EAE700DF9756 /* Build configuration list for PBXNativeTarget "L10nSnapshotTests" */;
 			buildPhases = (
+				669909D522CE2AC500327E20 /* Copy Carthage Dependencies */,
 				7BEB64431C7345600092C02E /* Sources */,
 				7BEB64461C7345600092C02E /* Frameworks */,
 				7BEB64471C7345600092C02E /* Resources */,
@@ -3832,6 +3861,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E60138641C89EAE700DF9756 /* Build configuration list for PBXNativeTarget "MarketingUITests" */;
 			buildPhases = (
+				669909D722CE2AD700327E20 /* Copy Carthage Dependencies */,
 				7BEB64501C7345990092C02E /* Sources */,
 				7BEB64531C7345990092C02E /* Frameworks */,
 				7BEB64541C7345990092C02E /* Resources */,
@@ -3850,6 +3880,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D39FA1671A83E0EC00EE869C /* Build configuration list for PBXNativeTarget "UITests" */;
 			buildPhases = (
+				669909D122CE2A9800327E20 /* Copy Carthage Dependencies */,
 				D39FA15B1A83E0EC00EE869C /* Sources */,
 				D39FA15C1A83E0EC00EE869C /* Frameworks */,
 				D39FA15D1A83E0EC00EE869C /* Resources */,
@@ -3889,6 +3920,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E69DB0921E97DEAA008A67E6 /* Build configuration list for PBXNativeTarget "SyncTelemetryTests" */;
 			buildPhases = (
+				669909DA22CE2AEF00327E20 /* Copy Carthage Dependencies */,
 				E69DB0791E97DEA9008A67E6 /* Sources */,
 				E69DB07A1E97DEA9008A67E6 /* Frameworks */,
 				E69DB07B1E97DEA9008A67E6 /* Resources */,
@@ -3908,6 +3940,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6F965381B2F1CF20034B023 /* Build configuration list for PBXNativeTarget "SharedTests" */;
 			buildPhases = (
+				669909D422CE2ABC00327E20 /* Copy Carthage Dependencies */,
 				E6F965081B2F1CF20034B023 /* Sources */,
 				E6F965091B2F1CF20034B023 /* Frameworks */,
 				E6F9650A1B2F1CF20034B023 /* Resources */,
@@ -3957,6 +3990,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F84B21E01A090F8100AAB793 /* Build configuration list for PBXNativeTarget "ClientTests" */;
 			buildPhases = (
+				669909D022CE2A8400327E20 /* Copy Carthage Dependencies */,
 				F84B21CF1A090F8100AAB793 /* Sources */,
 				F84B21D01A090F8100AAB793 /* Frameworks */,
 				F84B21D11A090F8100AAB793 /* Resources */,
@@ -4439,6 +4473,196 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		663F949122CE298700D8B29A /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D022CE2A8400327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D122CE2A9800327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D222CE2AA300327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D322CE2AB400327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D422CE2ABC00327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D522CE2AC500327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D722CE2AD700327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909D922CE2AE700327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		669909DA22CE2AEF00327E20 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
 		7B604F8F1C494AAA006EEEC3 /* Copy Carthage Dependencies */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4506,13 +4730,14 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/MappaMundi.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AStar.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ScopeAgent.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

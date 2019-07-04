@@ -1,69 +1,14 @@
 pipeline {
-    agent any
-    triggers {
-        cron(env.BRANCH_NAME == 'master' ? 'H 0 * * *' : '')
+    agent {
+      label 'mac'
     }
-    options {
-        timestamps()
-        timeout(time: 1, unit: 'HOURS')
-    }
+
     stages {
-        stage('checkout') {
-            when { branch 'master' }
-            steps {
-                checkout scm
-            }
-        }
-        stage('bootstrap') {
-            when { branch 'master' }
+        stage('Build') {
             steps {
                 sh './bootstrap.sh'
+                sh 'xcrun xcodebuild -scheme Fennec -sdk iphonesimulator -destination \'platform=iOS Simulator,name=iPhone X,OS=12.2\' SYMROOT=$(PWD)/build test'
             }
-        }
-        stage('test') {
-            when { branch 'master' }
-            steps {
-                dir('SyncIntegrationTests') {
-                    sh 'pipenv install'
-                    sh 'pipenv check'
-                    sh 'pipenv run pytest ' +
-                        '--color=yes ' +
-                        '--junit-xml=results/junit.xml ' +
-                        '--html=results/index.html'
-                }
-            }
-        }
-    }
-    post {
-        always {
-             script {
-                 if (env.BRANCH_NAME == 'master') {
-                 archiveArtifacts 'SyncIntegrationTests/results/*'
-                 junit 'SyncIntegrationTests/results/*.xml'
-                 publishHTML(target: [
-                     allowMissing: false,
-                     alwaysLinkToLastBuild: true,
-                     keepAll: true,
-                     reportDir: 'SyncIntegrationTests/results',
-                     reportFiles: 'index.html',
-                     reportName: 'HTML Report'])
-                 }
-             }
-        }
-
-        failure {
-            script {
-                if (env.BRANCH_NAME == 'master') {
-                    slackSend(
-                        color: 'danger',
-                        message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                }
-            }
-        }
-        fixed {
-            slackSend(
-                color: 'good',
-                message: "FIXED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
         }
     }
 }
