@@ -304,6 +304,53 @@
             ReferencedContainer = "container:Client.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SCOPE_APIKEY"
+            value = "$(SCOPE_APIKEY)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SCOPE_API_ENDPOINT"
+            value = "$(SCOPE_API_ENDPOINT)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SCOPE_COMMIT_SHA"
+            value = "$(SCOPE_COMMIT_SHA)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SCOPE_REPOSITORY"
+            value = "$(SCOPE_REPOSITORY)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SCOPE_SOURCE_ROOT"
+            value = "$(SCOPE_SOURCE_ROOT)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "JENKINS_URL"
+            value = "$(JENKINS_URL)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "BUILD_ID"
+            value = "$(BUILD_ID)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "BUILD_NUMBER"
+            value = "$(BUILD_NUMBER)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "BUILD_URL"
+            value = "$(BUILD_URL)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
