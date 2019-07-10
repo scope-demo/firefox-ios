@@ -1,4 +1,4 @@
-binary "https://releases.undefinedlabs.com/scope/agents/ios/ScopeAgent.json" "0.2.3"
+binary "https://releases.undefinedlabs.com/scope/agents/ios/ScopeAgent.json" "0.2.4"
 github "AgileBits/onepassword-app-extension" "bcc4cc97fed9a6e73fa204f2e61138e353cb3ef7"
 github "DaveWoodCom/XCGLogger" "7.0.0"
 github "Leanplum/Leanplum-iOS-SDK" "2.4.2"
