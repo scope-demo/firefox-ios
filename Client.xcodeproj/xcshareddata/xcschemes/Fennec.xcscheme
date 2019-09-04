@@ -316,6 +316,16 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "SCOPE_XCODE_APIKEY"
+            value = "$(SCOPE_XCODE_APIKEY)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SCOPE_XCODE_API_ENDPOINT"
+            value = "$(SCOPE_XCODE_API_ENDPOINT)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "SCOPE_COMMIT_SHA"
             value = "$(GIT_COMMIT)"
             isEnabled = "YES">
