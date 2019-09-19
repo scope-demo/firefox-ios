@@ -5,12 +5,14 @@
 import Foundation
 import Network
 import SwiftyJSON
+import ScopeAgent
 
 public func makeURLSession(userAgent: String, configuration: URLSessionConfiguration, timeout: TimeInterval? = nil) -> URLSession {
     configuration.httpAdditionalHeaders = ["User-Agent": userAgent]
     if let t = timeout {
         configuration.timeoutIntervalForRequest = t
     }
+    SAURLSessionObserver.adaptConfiguration(configuration);
     return URLSession(configuration: configuration, delegate: nil, delegateQueue: .main)
 }
 
