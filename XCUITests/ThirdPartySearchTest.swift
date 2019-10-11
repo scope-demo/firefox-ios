@@ -65,8 +65,8 @@ class ThirdPartySearchTest: BaseTestCase {
     func testCustomSearchEngineDeletion() {
         // Visit MDN to add a custom search engine
         loadWebPage(mozDeveloperWebsite, waitForLoadToFinish: true)
-
         addSearchProvider()
+
         if !isTablet {
             dismissKeyboardAssistant(forApp: app)
         }
@@ -118,7 +118,6 @@ class ThirdPartySearchTest: BaseTestCase {
         app.alerts["Add Search Provider?"].buttons["OK"].tap()
         XCTAssertFalse(app.buttons["AddSearch"].isEnabled)
     }
-
 
     func testCustomEngineFromCorrectTemplate() {
         navigator.goto(SearchSettings)
