@@ -101,12 +101,14 @@ let LibraryPanel_Bookmarks = "LibraryPanel.Bookmarks.1"
 let LibraryPanel_History = "LibraryPanel.History.2"
 let LibraryPanel_ReadingList = "LibraryPanel.ReadingList.3"
 let LibraryPanel_Downloads = "LibraryPanel.Downloads.4"
+let LibraryPanel_SyncedTabs = "LibraryPanel.SyncedTabs.5"
 
 let allHomePanels = [
     LibraryPanel_Bookmarks,
     LibraryPanel_History,
     LibraryPanel_ReadingList,
-    LibraryPanel_Downloads
+    LibraryPanel_Downloads,
+    LibraryPanel_SyncedTabs
 ]
 
 class Action {
@@ -190,9 +192,9 @@ class Action {
     static let PinToTopSitesPAM = "PinToTopSitesPAM"
     static let CopyAddressPAM = "CopyAddressPAM"
 
-    static let SelectDarkMode = "SelectDarkMode"
-    static let SelectLightMode = "SelectLightMode"
     static let SelectAutomatically = "SelectAutomatically"
+    static let SelectManually = "SelectManually"
+    static let SystemThemeSwitch = "SystemThemeSwitch"
 
     static let SelectTranslateThisPage = "SelectTranslateThisPage"
     static let SelectDontTranslateThisPage = "SelectDontTranslateThisPage"
@@ -207,6 +209,7 @@ class Action {
     static let CloseReadingListPanel = "CloseReadingListPanel"
     static let CloseHistoryListPanel = "CloseHistoryListPanel"
     static let CloseDownloadsPanel = "CloseDownloadsPanel"
+    static let CloseSyncedTabsPanel = "CloseSyncedTabsPanel"
 
     static let AddNewBookmark = "AddNewBookmark"
     static let AddNewFolder = "AddNewFolder"
@@ -300,22 +303,15 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
     // Add the intro screens.
     var i = 0
     let introLast = allIntroPages.count - 1
-    let introPager = app.scrollViews["IntroViewController.scrollView"]
     for intro in allIntroPages {
         let prev = i == 0 ? nil : allIntroPages[i - 1]
         let next = i == introLast ? nil : allIntroPages[i + 1]
 
         map.addScreenState(intro) { screenState in
-            if let prev = prev {
-                screenState.swipeRight(introPager, to: prev)
-            }
-
             if let next = next {
-                screenState.swipeLeft(introPager, to: next)
-            }
-
-            if i > 0 {
-                let startBrowsingButton = app.buttons["IntroViewController.startBrowsingButton"]
+                screenState.tap(app.buttons["nextOnboardingButton"], to: next)
+            }  else {
+                let startBrowsingButton = app.buttons["startBrowsingOnboardingButton"]
                 screenState.tap(startBrowsingButton, to: BrowserTab)
             }
         }
@@ -538,7 +534,7 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
     }
 
     map.addScreenState(LibraryPanel_History) { screenState in
-        screenState.press(app.tables["History List"].cells.element(boundBy: 3), to: HistoryPanelContextMenu)
+        screenState.press(app.tables["History List"].cells.element(boundBy: 2), to: HistoryPanelContextMenu)
         screenState.tap(app.cells["HistoryPanel.recentlyClosedCell"], to: HistoryRecentlyClosed)
         screenState.gesture(forAction: Action.ClearRecentHistory) { userState in
             app.tables["History List"].cells.matching(identifier: "HistoryPanel.clearHistory").element(boundBy: 0).tap()
@@ -549,6 +545,18 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
                 app.buttons["TabToolbar.libraryButton"].tap()
             } else {
                 historyListElement.press(forDuration: 2, thenDragTo: app.buttons["LibraryPanels.History"])
+            }
+        }
+    }
+
+    map.addScreenState(LibraryPanel_SyncedTabs) { screenState in
+        screenState.dismissOnUse = true
+        let syncedTabsElement = app.navigationBars["Synced Tabs"]
+        screenState.gesture(forAction: Action.CloseSyncedTabsPanel, transitionTo: HomePanelsScreen) { userState in
+            if isTablet {
+                app.buttons["TabToolbar.libraryButton"].tap()
+            } else {
+                syncedTabsElement.press(forDuration: 2, thenDragTo: app.buttons["LibraryPanels.SyncedTabs"])
             }
         }
     }
@@ -617,14 +625,14 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
     }
 
     map.addScreenState(DisplaySettings) { screenState in
-        screenState.gesture(forAction: Action.SelectDarkMode) { userState in
-            app.cells.staticTexts["Dark"].tap()
-        }
-        screenState.gesture(forAction: Action.SelectLightMode) { userState in
-            app.cells.staticTexts["Light"].tap()
-        }
         screenState.gesture(forAction: Action.SelectAutomatically) { userState in
-            app.switches["DisplaySwitchValue"].tap()
+            app.cells.staticTexts["Automatically"].tap()
+        }
+        screenState.gesture(forAction: Action.SelectManually) { userState in
+            app.cells.staticTexts["Manually"].tap()
+        }
+        screenState.gesture(forAction: Action.SystemThemeSwitch) { userState in
+            app.switches["SystemThemeSwitchValue"].tap()
         }
         screenState.backAction = navigationControllerBackAction
     }
@@ -668,8 +676,8 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
 
         screenState.gesture(forAction: Action.FxATypeEmail) { userState in
             if isTablet {
-                app.textFields.element(boundBy: 1).tap()
-                app.textFields.element(boundBy: 1).typeText(userState.fxaUsername!)
+                app.webViews.textFields.element(boundBy: 0).tap()
+                app.webViews.textFields.element(boundBy: 0).typeText(userState.fxaUsername!)
             } else {
                 app.textFields.element(boundBy: 0).tap()
                 app.textFields.element(boundBy: 0).typeText(userState.fxaUsername!)
@@ -907,11 +915,6 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
         screenState.backAction = cancelBackAction
     }
 
-    let lastButtonIsCancel = {
-        let lastIndex = app.sheets.element(boundBy: 0).buttons.count - 1
-        app.sheets.element(boundBy: 0).buttons.element(boundBy: lastIndex).tap()
-    }
-
     func makeURLBarAvailable(_ screenState: MMScreenStateNode<FxUserState>) {
         screenState.tap(app.textFields["url"], to: URLBarOpen)
         screenState.gesture(to: URLBarLongPressMenu) {
@@ -1007,14 +1010,14 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
         }
     }
 
-    map.addScreenState(WebImageContextMenu) { screenState in
-        screenState.dismissOnUse = true
-        screenState.backAction = lastButtonIsCancel
-    }
-
-    map.addScreenState(WebLinkContextMenu) { screenState in
-        screenState.dismissOnUse = true
-        screenState.backAction = lastButtonIsCancel
+    [WebImageContextMenu, WebLinkContextMenu].forEach { item in
+        map.addScreenState(item) { screenState in
+            screenState.dismissOnUse = true
+            screenState.backAction = {
+                let window = XCUIApplication().windows.element(boundBy: 0)
+                window.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: 0.5)).tap()
+            }
+        }
     }
 
     // make sure after the menu action, navigator.nowAt() is used to set the current state
@@ -1046,6 +1049,7 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> MMScr
         screenState.tap(app.buttons["LibraryPanels.History"], to: LibraryPanel_History)
         screenState.tap(app.buttons["LibraryPanels.ReadingList"], to: LibraryPanel_ReadingList)
         screenState.tap(app.buttons["LibraryPanels.Downloads"], to: LibraryPanel_Downloads)
+        screenState.tap(app.buttons["LibraryPanels.SyncedTabs"], to: LibraryPanel_SyncedTabs)
     }
 
     map.addScreenState(BrowserTabMenu) { screenState in
@@ -1088,7 +1092,7 @@ extension MMNavigator where T == FxUserState {
     func openNewURL(urlString: String) {
         let app = XCUIApplication()
         if isTablet {
-            waitForExistence(app.buttons["TopTabsViewController.tabsButton"], timeout: 5)
+            waitForExistence(app.buttons["TopTabsViewController.tabsButton"], timeout: 15)
         } else {
             waitForExistence(app.buttons["TabToolbar.tabsButton"], timeout: 10)
         }

@@ -9,7 +9,7 @@ let website_2 = ["url": "www.example.com", "label": "Example", "value": "example
 
 let urlAddons = "addons.mozilla.org"
 let urlGoogle = "www.google.com"
-let popUpTestUrl = "http://www.popuptest.com/popuptest1.html"
+let popUpTestUrl = path(forTestPage: "test-popup-blocker.html")
 
 let requestMobileSiteLabel = "Request Mobile Site"
 let requestDesktopSiteLabel = "Request Desktop Site"
@@ -98,20 +98,19 @@ class NavigationTest: BaseTestCase {
 
     func testTapSignInShowsFxAFromRemoteTabPanel() {
         // Open FxAccount from remote tab panel and check the Sign in to Firefox scren
-        navigator.goto(LibraryPanel_History)
-        XCTAssertTrue(app.tables["History List"].staticTexts["Synced Devices"].isEnabled)
-        app.tables["History List"].staticTexts["Synced Devices"].tap()
+        navigator.goto(LibraryPanel_SyncedTabs)
+
         app.tables.buttons["Sign in to Sync"].tap()
         checkFirefoxSyncScreenShown()
         app.navigationBars["Client.FxAContentView"].buttons["Done"].tap()
-        navigator.nowAt(LibraryPanel_History)
+        navigator.nowAt(LibraryPanel_SyncedTabs)
     }
 
     private func checkFirefoxSyncScreenShown() {
         waitForExistence(app.navigationBars["Client.FxAContentView"], timeout: 20)
        if isTablet {
-            waitForExistence(app.textFields.element(boundBy: 1), timeout: 3)
-            let email = app.textFields.element(boundBy: 1)
+            waitForExistence(app.webViews.textFields.element(boundBy: 0), timeout: 3)
+            let email = app.webViews.textFields.element(boundBy: 0)
             // Verify the placeholdervalues here for the textFields
             let mailPlaceholder = "Email"
             let defaultMailPlaceholder = email.placeholderValue!
@@ -327,8 +326,9 @@ class NavigationTest: BaseTestCase {
 
         // Check that there are no pop ups
         navigator.openURL(popUpTestUrl)
-        waitForValueContains(app.textFields["url"], value: "popuptest1.html")
-        waitForNoExistence(app.images["popup"])
+        waitForValueContains(app.textFields["url"], value: "blocker.html")
+        waitForExistence(app.webViews.staticTexts["Blocked Element"])
+
         let numTabs = app.buttons["Show Tabs"].value
         XCTAssertEqual("1", numTabs as? String, "There should be only on tab")
 
@@ -339,12 +339,10 @@ class NavigationTest: BaseTestCase {
         let switchValueAfter = switchBlockPopUps.value!
         XCTAssertEqual(switchValueAfter as? String, "0")
 
-        // Check that now pop ups are shown
+        // Check that now pop ups are shown, two sites loaded
         navigator.openURL(popUpTestUrl)
         waitUntilPageLoad()
-        waitForValueContains(app.textFields["url"], value: "popup6.html")
-        waitForExistence(app.images["popup"])
-        XCTAssertTrue(app.images["popup"].exists, "There is a pop up")
+        waitForValueContains(app.textFields["url"], value: "example.com")
         let numTabsAfter = app.buttons["Show Tabs"].value
         XCTAssertNotEqual("1", numTabsAfter as? String, "Several tabs are open")
     }

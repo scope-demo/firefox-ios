@@ -346,11 +346,7 @@ class Tab: NSObject {
     }
 
     func removeAllBrowsingData(completionHandler: @escaping () -> Void = {}) {
-        let dataTypes = Set([WKWebsiteDataTypeCookies,
-                             WKWebsiteDataTypeLocalStorage,
-                             WKWebsiteDataTypeSessionStorage,
-                             WKWebsiteDataTypeWebSQLDatabases,
-                             WKWebsiteDataTypeIndexedDBDatabases])
+        let dataTypes = WKWebsiteDataStore.allWebsiteDataTypes()
 
         webView?.configuration.websiteDataStore.removeData(ofTypes: dataTypes,
                                                      modifiedSince: Date.distantPast,
@@ -460,6 +456,12 @@ class Tab: NSObject {
     }
 
     func reload() {
+        // If the current page is an error page, and the reload button is tapped, load the original URL
+        if let url = webView?.url, let internalUrl = InternalURL(url), let page = internalUrl.originalURLFromErrorPage {
+            webView?.evaluateJavaScript("location.replace('\(page)')", completionHandler: nil)
+            return
+        }
+        
         if let _ = webView?.reloadFromOrigin() {
             print("reloaded zombified tab from origin")
             return
@@ -593,6 +595,10 @@ class Tab: NSObject {
             self.urlDidChangeDelegate = nil
         }
     }
+
+    func applyTheme() {
+        UITextField.appearance().keyboardAppearance = isPrivate ? .dark : (ThemeManager.instance.currentName == .dark ? .dark : .light)
+    }
 }
 
 extension Tab: TabWebViewDelegate {
@@ -673,6 +679,7 @@ class TabWebView: WKWebView, MenuHelperInterface {
             let backgroundColor = ThemeManager.instance.current.browser.background.hexString
             evaluateJavaScript("document.documentElement.style.backgroundColor = '\(backgroundColor)';")
         }
+        window?.backgroundColor = UIColor.theme.browser.background
     }
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {

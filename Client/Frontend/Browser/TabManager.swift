@@ -74,6 +74,12 @@ class TabManager: NSObject {
             configuration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
         }
 
+        // Append FxiOS/version Mobile/version Safari/version to the built-in user agent
+        let desktop = UserAgent.isDesktop(ua: UserAgent.defaultUserAgent())
+        configuration.applicationNameForUserAgent = "FxiOS/\(AppInfo.appVersion) " +
+             (desktop ? "\(UserAgent.uaBitGoogleIpad) " : "\(UserAgent.uaBitMobile) ") +
+             "\(UserAgent.uaBitSafari)"
+
         configuration.setURLSchemeHandler(InternalSchemeHandler(), forURLScheme: InternalURL.scheme)
         return configuration
     }
@@ -210,7 +216,7 @@ class TabManager: NSObject {
         }
         if let tab = selectedTab {
             TabEvent.post(.didGainFocus, for: tab)
-            UITextField.appearance().keyboardAppearance = tab.isPrivate ? .dark : .light
+            tab.applyTheme()
         }
     }
 
