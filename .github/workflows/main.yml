@@ -1,0 +1,24 @@
+name: Scope Testing
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+    - name: Install swiftlint
+      run: brew install swiftlint
+    - uses: actions/checkout@v1
+    - name: Bootstrap
+      run: ./bootstrap.sh
+    - name: Scope for iOS
+      uses: undefinedlabs/scope-for-ios-action@v1
+      with:
+        dsn: ${{ secrets.SCOPE_DSN }}
+        project: Client.xcodeproj
+        scheme: Fennec
+        instrumentHttpPayloads: true
+
+
