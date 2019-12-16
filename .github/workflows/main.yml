@@ -8,8 +8,7 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - name: Install swiftlint
-      run: brew install swiftlint
+    - name: Checkout
     - uses: actions/checkout@v1
     - name: Bootstrap
       run: ./bootstrap.sh
