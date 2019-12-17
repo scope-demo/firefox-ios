@@ -13,9 +13,9 @@ jobs:
     - name: Switch XCode Version
       run: sudo xcode-select -s /Applications/Xcode_11.2.app
     - name: Bootstrap
-      run: ./bootstrap.sh
+      run: ./bootstrap.sh --force
     - name: Scope for iOS
-      uses: undefinedlabs/scope-for-ios-action@pretty
+      uses: undefinedlabs/scope-for-ios-action@v1
       with:
         dsn: ${{ secrets.SCOPE_DSN }}
         project: Client.xcodeproj
