@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: Switch XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_11.app
     - name: Bootstrap
       run: ./bootstrap.sh
     - name: Scope for iOS
